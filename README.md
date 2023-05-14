@@ -35,6 +35,7 @@ Project requires [.NET](https://dotnet.microsoft.com/en-us/) v6.0.1 to run.
 If you have Docker installed, follow these steps:
 - Create a `.env` file by running `touch .env`
 - Add the following environment variables to your `.env` file:
+
 `DB_USER=[CustomUser]`
 
 `DB_PASSWORD=[YourPassword]`
