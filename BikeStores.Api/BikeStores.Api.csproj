@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>fda304ff-dfcd-4d3a-886b-0468e3fae288</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BikeStores.Application\BikeStores.Application.csproj" />
+    <ProjectReference Include="..\BikeStores.Domain\BikeStores.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

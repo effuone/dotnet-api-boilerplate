@@ -1,0 +1,60 @@
+using Microsoft.EntityFrameworkCore;
+using BikeStores.Domain.Context;
+using BikeStores.Application.Interfaces;
+using BikeStores.Application.Repositories;
+
+var builder = WebApplication.CreateBuilder(args);
+{
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+
+    //configuring MSSQL database connection string from secret store
+    string server = builder.Configuration["DB_SERVER"];
+    string port = builder.Configuration["DB_PORT"];
+    string user = builder.Configuration["DB_USER"];
+    string password = builder.Configuration["DB_PASSWORD"];
+    string database = builder.Configuration["DB_DATABASE"];
+
+    //linux MSSQL docker image connection
+    // var connectionString = $"Server=tcp:{server}, {port};Database={database};User Id={user};Password={password}";                         
+
+    //Windows direct MSSQL connection
+    string connectionString = @$"Data Source={server};Initial Catalog={database}; Trusted_Connection=True;";
+
+    builder.Services.AddDbContext<BikeStoresContext>(options=>options.UseSqlServer(connectionString));
+
+        //Dependency Injection
+        builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+        builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+        builder.Services.AddSwaggerGen();
+
+        //supressing async suffix in action names for retrieving object via "CreatedAtAction" method after HttpPost requests
+        builder.Services.AddMvc(options =>
+        {
+            options.SuppressAsyncSuffixInActionNames = false;
+        });
+}
+var app = builder.Build();
+{
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseDeveloperExceptionPage();
+        app.UseSwaggerUI();
+        app.UseHttpsRedirection();
+    }
+    else
+    {
+        app.UseHsts();
+    }
+
+    app.UseHttpsRedirection();
+
+    app.UseAuthorization();
+
+    app.UseRouting();
+    app.MapControllers();
+
+    app.Run();
+}
