@@ -25,14 +25,6 @@ namespace BikeStores.Domain.Context
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Store> Stores { get; set; }
 
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // {
-        //     if (!optionsBuilder.IsConfigured)
-        //     {
-        //         optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BikeStores");
-        //     }
-        // }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

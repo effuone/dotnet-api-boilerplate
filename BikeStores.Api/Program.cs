@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using BikeStores.Domain.Context;
 using BikeStores.Application.Interfaces;
 using BikeStores.Application.Repositories;
-
+using BikeStores.Api.Preparations;
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();
@@ -56,5 +56,7 @@ var app = builder.Build();
     app.UseRouting();
     app.MapControllers();
 
+    await MigrationImplementer.PrepPopulation(app);
+    
     app.Run();
 }
