@@ -18,8 +18,9 @@ namespace BikeStores.Domain.Models
         public int CategoryId { get; set; }
         public short ModelYear { get; set; }
         public decimal ListPrice { get; set; }
-
+        [JsonIgnore]
         public virtual Brand Brand { get; set; }
+        [JsonIgnore]
         public virtual Category Category { get; set; }
         [JsonIgnore]
         public virtual ICollection<OrderItem> OrderItems { get; set; }

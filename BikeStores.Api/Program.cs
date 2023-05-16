@@ -27,6 +27,8 @@ var builder = WebApplication.CreateBuilder(args);
         //Dependency Injection
         builder.Services.AddScoped<IBrandRepository, BrandRepository>();
         builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+        builder.Services.AddScoped<IProductRepository, ProductRepository>();
+        builder.Services.AddScoped<IStoreRepository, StoreRepository>();
         builder.Services.AddSwaggerGen();
 
         //supressing async suffix in action names for retrieving object via "CreatedAtAction" method after HttpPost requests
