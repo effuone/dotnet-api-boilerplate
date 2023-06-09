@@ -1,6 +1,8 @@
-# Bike Stores API
+# .NET REST API boilerplate
 
-This is a template repository for beginners that follows a clean architecture pattern. The RESTful API allows clients to perform CRUD operations on the products, brands, and categories tables in the database. In addition, the API supports similar operations on other tables, such as orders, customers, and employees. The project includes separate layers for the presentation, application, and domain logic, as well as repositories and interfaces to abstract data access. The application also incorporates dependency injection and logging to improve maintainability and extensibility.
+This is a boilerplate template repository for beginners, specifically designed for .NET API development, using the example of the BikeStores database for SQL practice. It follows a clean architecture pattern to ensure a well-structured codebase.
+
+The RESTful API provided allows clients to perform CRUD (Create, Read, Update, Delete) operations on various tables in the database, such as products, brands, and categories. Furthermore, the API supports similar operations on additional tables, including orders, customers, and employees.
 
 ## Technologies Used
 
@@ -11,6 +13,7 @@ This is a template repository for beginners that follows a clean architecture pa
 - Repository Pattern
 - DTO Pattern
 - Swagger UI
+- [Bike Stores database](https://www.sqlservertutorial.net/sql-server-sample-database/)
 
 ## Getting started
 ### Prerequisites
