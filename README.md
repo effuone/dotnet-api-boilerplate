@@ -6,13 +6,13 @@ The RESTful API provided allows clients to perform CRUD (Create, Read, Update, D
 
 ## Technologies Used
 
-- ASP.NET Core
-- Entity Framework Core
-- MSSQL Server 
-- AutoMapper
-- Repository Pattern
-- DTO Pattern
-- Swagger UI
+- ASP.NET Core 
+- [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
+- [MSSQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- [AutoMapper](https://automapper.org/)
+- [Repository Pattern](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)
+- [DTO Pattern](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)
+- [Swagger UI](https://swagger.io/docs/)
 - [Bike Stores database](https://www.sqlservertutorial.net/sql-server-sample-database/)
 
 ## Getting started
