@@ -4,5 +4,5 @@ namespace BikeStores.Domain.Dtos.Brand;
 
 public class CreateBrandDto {
     [Required]
-    public string Name { get; set; }
+    public string BrandName { get; set; }
 }

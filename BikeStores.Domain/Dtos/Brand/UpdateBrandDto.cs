@@ -4,7 +4,7 @@ namespace BikeStores.Domain.Dtos.Brand;
 
 public class UpdateBrandDto {
     [Key]
-    public int Id { get; set; }
+    public int BrandId { get; set; }
     [Required]
-    public string Name { get; set; }
+    public string BrandName { get; set; }
 }

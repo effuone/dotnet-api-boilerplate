@@ -3,6 +3,8 @@ using BikeStores.Domain.Context;
 using BikeStores.Application.Interfaces;
 using BikeStores.Application.Repositories;
 using BikeStores.Api.Preparations;
+using AutoMapper;
+
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();
@@ -23,6 +25,9 @@ var builder = WebApplication.CreateBuilder(args);
     // string connectionString = @$"Data Source={server};Initial Catalog={database}; Trusted_Connection=True;";
 
     builder.Services.AddDbContext<BikeStoresContext>(options=>options.UseSqlServer(connectionString));
+
+        //AutoMapper configuration
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         //Dependency Injection
         builder.Services.AddScoped<IBrandRepository, BrandRepository>();
