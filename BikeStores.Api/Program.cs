@@ -17,10 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
     string database = builder.Configuration["DB_DATABASE"];
 
     //linux MSSQL docker image connection
-    // var connectionString = $"Server=tcp:{server}, {port};Database={database};User Id={user};Password={password}";                         
+    var connectionString = $"Server=tcp:{server}, {port};Database={database};User Id={user};Password={password}";  
 
     //Windows direct MSSQL connection
-    string connectionString = @$"Data Source={server};Initial Catalog={database}; Trusted_Connection=True;";
+    // string connectionString = @$"Data Source={server};Initial Catalog={database}; Trusted_Connection=True;";
 
     builder.Services.AddDbContext<BikeStoresContext>(options=>options.UseSqlServer(connectionString));
 
@@ -41,9 +41,7 @@ var app = builder.Build();
 {
     if (app.Environment.IsDevelopment())
     {
-        app.UseSwagger();
         app.UseDeveloperExceptionPage();
-        app.UseSwaggerUI();
         app.UseHttpsRedirection();
     }
     else
@@ -51,14 +49,12 @@ var app = builder.Build();
         app.UseHsts();
     }
 
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseHttpsRedirection();
-
     app.UseAuthorization();
-
     app.UseRouting();
     app.MapControllers();
-
     await MigrationImplementer.PrepPopulation(app);
-    
     app.Run();
 }

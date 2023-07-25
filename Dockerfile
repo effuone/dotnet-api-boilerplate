@@ -14,6 +14,7 @@ RUN dotnet build "BikeStores.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "BikeStores.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+COPY BikeStores.Api/Preparations/LoadAll.sql /app/publish/LoadAll.sql
 
 FROM base AS final
 WORKDIR /app

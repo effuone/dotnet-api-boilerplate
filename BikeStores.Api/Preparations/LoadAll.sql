@@ -12,6 +12,7 @@ INSERT INTO production.brands(brand_id,brand_name) VALUES(7,'Sun Bicycles')
 INSERT INTO production.brands(brand_id,brand_name) VALUES(8,'Surly')
 INSERT INTO production.brands(brand_id,brand_name) VALUES(9,'Trek')
 
+SET IDENTITY_INSERT production.brands OFF;  
 
 SET IDENTITY_INSERT production.categories ON;  
 INSERT INTO production.categories(category_id,category_name) VALUES(1,'Children Bicycles')
@@ -22,6 +23,7 @@ INSERT INTO production.categories(category_id,category_name) VALUES(5,'Electric 
 INSERT INTO production.categories(category_id,category_name) VALUES(6,'Mountain Bikes')
 INSERT INTO production.categories(category_id,category_name) VALUES(7,'Road Bikes')
 
+SET IDENTITY_INSERT production.categories OFF;  
 
 SET IDENTITY_INSERT production.products ON;
 INSERT INTO production.products(product_id, product_name, brand_id, category_id, model_year, list_price) VALUES(1,'Trek 820 - 2016',9,6,2016,379.99)
@@ -345,6 +347,8 @@ INSERT INTO production.products(product_id, product_name, brand_id, category_id,
 INSERT INTO production.products(product_id, product_name, brand_id, category_id, model_year, list_price) VALUES(319,'Trek Checkpoint SL 5 Women''s - 2019',9,7,2019,2799.99)
 INSERT INTO production.products(product_id, product_name, brand_id, category_id, model_year, list_price) VALUES(320,'Trek Checkpoint SL 6 - 2019',9,7,2019,3799.99)
 INSERT INTO production.products(product_id, product_name, brand_id, category_id, model_year, list_price) VALUES(321,'Trek Checkpoint ALR Frameset - 2019',9,7,2019,3199.99)
+
+SET IDENTITY_INSERT production.products OFF;
 
 -- sales.customers table
 INSERT INTO sales.customers(first_name, last_name, phone, email, street, city, state, zip_code) VALUES('Debra','Burks',NULL,'debra.burks@yahoo.com','9273 Thorne Ave. ','Orchard Park','NY',14127);
@@ -2755,6 +2759,7 @@ INSERT INTO sales.staffs(staff_id, first_name, last_name, email, phone, active, 
 INSERT INTO sales.staffs(staff_id, first_name, last_name, email, phone, active, store_id, manager_id) VALUES(9,'Layla','Terrell','layla.terrell@bikes.shop','(972) 530-5556',1,3,7);
 INSERT INTO sales.staffs(staff_id, first_name, last_name, email, phone, active, store_id, manager_id) VALUES(10,'Bernardine','Houston','bernardine.houston@bikes.shop','(972) 530-5557',1,3,7);
 
+SET IDENTITY_INSERT sales.staffs OFF;  
 
 SET IDENTITY_INSERT sales.orders ON;  
 INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,staff_id) VALUES(1,259,4,'20160101','20160103','20160103',1,2);
@@ -4373,6 +4378,7 @@ INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, requir
 INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,staff_id) VALUES(1614,135,3,'20181128','20181128',NULL,3,8);
 INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,staff_id) VALUES(1615,136,3,'20181228','20181228',NULL,3,8);
 
+SET IDENTITY_INSERT sales.orders OFF;  
 
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1,1,20,1,599.99,0.2);
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1,2,8,2,1799.99,0.07);

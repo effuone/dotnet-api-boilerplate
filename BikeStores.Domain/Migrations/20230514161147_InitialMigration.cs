@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -308,8 +309,23 @@ namespace BikeStores.Domain.Migrations
                 schema: "production",
                 table: "stocks",
                 column: "product_id");
-            
-            migrationBuilder.Sql(File.ReadAllText("Preparations/LoadAll.sql"));
+            try
+            {
+                string loadAllScript = File.ReadAllText("LoadAll.sql");
+                IEnumerable<string> commandStrings = Regex.Split(loadAllScript, @"(?<=[^\\]);");
+
+                foreach (string commandString in commandStrings)
+                {
+                    if (commandString.Trim() != "")
+                    {
+                        migrationBuilder.Sql(commandString);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
