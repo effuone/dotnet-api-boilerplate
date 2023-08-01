@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BikeStores.Application.Repositories;
 using BikeStores.Domain.Context;
 using BikeStores.Domain.Models;
