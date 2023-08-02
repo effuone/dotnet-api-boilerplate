@@ -5,8 +5,8 @@ using BikeStores.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace BikeStores.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class BrandController : ControllerBase
     {
         private readonly IBrandRepository _brandRepository;
