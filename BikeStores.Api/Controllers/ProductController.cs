@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BikeStores.Application.Interfaces;
 using BikeStores.Domain.Models;
 using Microsoft.AspNetCore.Mvc;

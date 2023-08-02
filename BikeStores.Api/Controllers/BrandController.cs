@@ -1,6 +1,6 @@
 using AutoMapper;
 using BikeStores.Application.Interfaces;
-using BikeStores.Domain.Dtos.Brand;
+using BikeStores.Domain.Dtos;
 using BikeStores.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace BikeStores.Api.Controllers
@@ -66,8 +66,8 @@ namespace BikeStores.Api.Controllers
         public async Task<IActionResult> DeleteBrand(int id)
         {
             await _brandRepository.DeleteAsync(id);
-            _logger.LogInformation($"Deleted brand with ID {id}");
 
+            _logger.LogInformation($"Deleted brand with ID {id}");
             return NoContent();
         }
     }
