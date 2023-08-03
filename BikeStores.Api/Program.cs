@@ -3,6 +3,7 @@ using BikeStores.Domain.Context;
 using BikeStores.Application.Interfaces;
 using BikeStores.Application.Repositories;
 using BikeStores.Api.Preparations;
+using Swashbuckle.AspNetCore.Annotations;
 using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,7 +35,7 @@ var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
         builder.Services.AddScoped<IStoreRepository, StoreRepository>();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(c =>{c.EnableAnnotations();});
 
         //supressing async suffix in action names for retrieving object via "CreatedAtAction" method after HttpPost requests
         builder.Services.AddMvc(options =>
