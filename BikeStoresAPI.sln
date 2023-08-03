@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeStores.Application", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeStores.Domain", "BikeStores.Domain\BikeStores.Domain.csproj", "{6CE3263F-E17B-4F49-A3A6-C2E28880FA59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeStores.UnitTests", "BikeStores.UnitTests\BikeStores.UnitTests.csproj", "{59BA6EC1-8211-4753-A589-E730A242A5F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{6CE3263F-E17B-4F49-A3A6-C2E28880FA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CE3263F-E17B-4F49-A3A6-C2E28880FA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CE3263F-E17B-4F49-A3A6-C2E28880FA59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BA6EC1-8211-4753-A589-E730A242A5F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BA6EC1-8211-4753-A589-E730A242A5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BA6EC1-8211-4753-A589-E730A242A5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BA6EC1-8211-4753-A589-E730A242A5F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
