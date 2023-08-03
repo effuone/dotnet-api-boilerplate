@@ -14,7 +14,6 @@ namespace BikeStores.Domain.Context
             : base(options)
         {
         }
-
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -39,6 +38,7 @@ namespace BikeStores.Domain.Context
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("brand_name");
+                entity.HasIndex(e => e.BrandName).IsUnique();
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -52,6 +52,7 @@ namespace BikeStores.Domain.Context
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("category_name");
+                entity.HasIndex(e => e.CategoryName).IsUnique();
             });
 
             modelBuilder.Entity<Customer>(entity =>
@@ -102,6 +103,8 @@ namespace BikeStores.Domain.Context
                     .HasMaxLength(5)
                     .IsUnicode(false)
                     .HasColumnName("zip_code");
+
+                entity.HasIndex(e => e.Email).IsUnique();
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -213,6 +216,8 @@ namespace BikeStores.Domain.Context
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)
                     .HasConstraintName("FK__products__catego__276EDEB3");
+
+                entity.HasIndex(e => e.ProductName).IsUnique();
             });
 
             modelBuilder.Entity<Staff>(entity =>
