@@ -6,7 +6,7 @@ namespace BikeStores.Application.Interfaces
         public Task<T> GetAsync(int id);
         public Task<IEnumerable<T>> GetAllAsync();
         public Task<T> CreateAsync(T model);
-        public Task UpdateAsync(int id, T model);
-        public Task DeleteAsync(int id);
+        public Task<bool> UpdateAsync(int id, T model);
+        public Task<bool> DeleteAsync(int id);
     }
 }
