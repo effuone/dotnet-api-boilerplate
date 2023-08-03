@@ -180,10 +180,8 @@ namespace BikeStores.UnitTests.BrandControllerTests
             var loggerMock = new Mock<ILogger<BrandController>>();
             var mapperMock = new Mock<IMapper>();
 
-            // Mocking the behavior of IMapper.Map() to return the brand entity and brand DTO.
             mapperMock.Setup(mapper => mapper.Map<Brand>(createBrandDto)).Returns(new Brand { BrandName = createBrandDto.BrandName });
 
-            // Mocking the behavior of IBrandRepository.CreateAsync() to simulate concurrency issues.
             brandRepositoryMock.Setup(repo => repo.CreateAsync(It.IsAny<Brand>())).Returns(Task.FromResult(new Brand()));
 
             var controller = new BrandController(brandRepositoryMock.Object, loggerMock.Object, mapperMock.Object);
@@ -191,13 +189,12 @@ namespace BikeStores.UnitTests.BrandControllerTests
             const int concurrentRequests = 5;
             var tasks = new List<Task<IActionResult>>();
 
-            // Simulate concurrent requests using Task.Run.
             for (int i = 0; i < concurrentRequests; i++)
             {
                 tasks.Add(controller.CreateBrandAsync(createBrandDto));
             }
 
-            // Act: Wait for all concurrent tasks to complete.
+            // Act
             var results = await Task.WhenAll(tasks);
 
             // Assert
@@ -242,7 +239,6 @@ namespace BikeStores.UnitTests.BrandControllerTests
             var updateBrandDto = new UpdateBrandDto { BrandName = "Updated Brand" };
 
             var brandRepositoryMock = new Mock<IBrandRepository>();
-            // Simulate no brand found in the repository.
             brandRepositoryMock.Setup(repo => repo.GetAsync(brandId)).ReturnsAsync((Brand)null);
 
             var loggerMock = new Mock<ILogger<BrandController>>();
@@ -255,6 +251,50 @@ namespace BikeStores.UnitTests.BrandControllerTests
 
             // Assert
             result.Should().BeOfType<NotFoundResult>();
+        }
+        [Fact]
+        public async Task DeleteBrand_WithBrandNotFound_ShouldReturnNotFound()
+        {
+            // Arrange
+            var brandId = 1;
+
+            var brandRepositoryMock = new Mock<IBrandRepository>();
+            brandRepositoryMock.Setup(repo => repo.GetAsync(brandId)).ReturnsAsync((Brand)null);
+
+            var loggerMock = new Mock<ILogger<BrandController>>();
+            var mapperMock = new Mock<IMapper>();
+
+            var controller = new BrandController(brandRepositoryMock.Object, loggerMock.Object, mapperMock.Object);
+
+            // Act
+            var result = await controller.DeleteBrandAsync(brandId);
+
+            // Assert
+            result.Should().BeOfType<NotFoundResult>();
+            brandRepositoryMock.Verify(repo => repo.DeleteAsync(It.IsAny<int>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task DeleteBrand_WithBrandDeletedSuccessfully_ShouldReturnNoContent()
+        {
+            // Arrange
+            var brandId = 1;
+            var existingBrand = new Brand { BrandId = brandId, BrandName = "Old Brand" };
+
+            var brandRepositoryMock = new Mock<IBrandRepository>();
+            brandRepositoryMock.Setup(repo => repo.GetAsync(brandId)).ReturnsAsync(existingBrand);
+
+            var loggerMock = new Mock<ILogger<BrandController>>();
+            var mapperMock = new Mock<IMapper>();
+
+            var controller = new BrandController(brandRepositoryMock.Object, loggerMock.Object, mapperMock.Object);
+
+            // Act
+            var result = await controller.DeleteBrandAsync(brandId);
+
+            // Assert
+            result.Should().BeOfType<NoContentResult>();
+            brandRepositoryMock.Verify(repo => repo.DeleteAsync(brandId), Times.Once);
         }
     }
 }
