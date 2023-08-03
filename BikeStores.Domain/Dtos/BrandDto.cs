@@ -9,13 +9,13 @@ public class BrandDto {
 }
 
 public class UpdateBrandDto {
-    [Key]
-    public int BrandId { get; set; }
     [Required]
+    [MaxLength(20)]
     public string BrandName { get; set; }
 }
 
 public class CreateBrandDto {
     [Required]
+    [MaxLength(20)]
     public string BrandName { get; set; }
 }
